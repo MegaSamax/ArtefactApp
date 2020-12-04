@@ -1,14 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
 export default function App() {
+  const onPressTaskList = () => console.log("Temp Function");
+
   return (
-    <View style={styles.container}>
+    <View >
       {/* List Icon */}
+      <View> 
+        <Button styles = {StyleSheet.listButton} 
+          onPress={onPressTaskList}
+          title='List'
+          color='#D1603D'
+        />
+      </View>
 
       {/* Open / Completed Task Counters */}
-      <View>
+      <View style={styles.container}>
         <Text>Open</Text>
         <Text>Completed</Text>
       </View>
@@ -39,4 +48,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  listButton: { 
+   
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
