@@ -1,15 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { Button, StyleSheet, Text, View, Platform, StatusBar, } from 'react-native';
 
 export default function App() {
   const onPressTaskList = () => console.log("Temp Function");
-
+  const onPressAddTask = () => console.log("Temp Function");
+  
   return (
-    <View >
+    <View style={{
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "baseline",
+      paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    }} 
+    >
       {/* List Icon */}
-      <View> 
-        <Button styles = {StyleSheet.listButton} 
+      <View style={styles.container}>
+        <Button  
           onPress={onPressTaskList}
           title='List'
           color='#D1603D'
@@ -19,39 +25,41 @@ export default function App() {
       {/* Open / Completed Task Counters */}
       <View style={styles.container}>
         <Text>Open</Text>
-        <Text>Completed</Text>
+      </View>
+
+      <View style={styles.container}>
+        <Text>Complete</Text>
       </View>
 
       {/* Add Task Icon */}
-
-      {/* Generate Task Button */}
-
-      {/* Current Task Title */}
-      <View>
-        <Text>TASK</Text>
+      <View style={styles.container}>
+        <Button  
+        onPress={onPressAddTask}
+        title='Add'
+        color='#D1603D'
+        />
       </View>
 
-      {/* Current Task Content */}
 
-      {/* Complete Task Button */}
-
-      <StatusBar style="auto" />
     </View>
   );
 
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+{/* Generate Task Button */}
 
-  listButton: { 
-   
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
+{/* Current Task Title */}
+
+{/* Current Task Content */}
+
+{/* Complete Task Button */}
+
+const styles = StyleSheet.create({
+container: {
+  flex: 1,
+  width: 15,
+  height: 5,
+  margin: 2,
+  alignItems: "center",
+}
 });
