@@ -1,0 +1,8 @@
+Windows: 
+- Open Project in VS code
+- VS CODE Terminal 
+- expo start (in CMD Prompt)
+
+
+Stop: 
+- CRTL C
