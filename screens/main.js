@@ -10,11 +10,11 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
-import { Header } from "./components/Header.js";
-import { RandomTask } from "./components/RandomTask.js";
-import { CurrentTask } from "./components/CurrentTask.js";
+import { Header } from "../components/Header.js";
+import { RandomTask } from "../components/RandomTask.js";
+import { CurrentTask } from "../components/CurrentTask.js";
 
-const App = () => {
+const Main = () => {
   return (
     <NavigationContainer>
       <View
@@ -42,4 +42,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
