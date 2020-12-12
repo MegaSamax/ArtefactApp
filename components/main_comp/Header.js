@@ -1,9 +1,10 @@
 import React from "react";
 import { Text, View, Button, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export const Header = () => {
-  const onPressTaskList = () => console.log("Temp Function");
-  const onPressAddTask = () => console.log("Temp Function");
+export const Header = ({ navigation }) => {
+  console.log(navigation);
 
   return (
     <View
@@ -15,7 +16,11 @@ export const Header = () => {
     >
       {/* List Icon */}
       <View style={styles.container}>
-        <Button onPress={onPressTaskList} title="List" color="#D1603D" />
+        <Button
+          onPress={() => navigation.push("List")}
+          title="List"
+          color="#D1603D"
+        />
       </View>
 
       {/* Open / Completed Task Counters */}
@@ -41,7 +46,11 @@ export const Header = () => {
 
       {/* Add Task Icon */}
       <View style={styles.container}>
-        <Button onPress={onPressAddTask} title="Add" color="#D1603D" />
+        <Button
+          onPress={() => navigation.push("Add")}
+          title="Add"
+          color="#D1603D"
+        />
       </View>
     </View>
   );

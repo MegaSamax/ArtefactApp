@@ -11,8 +11,18 @@ import {
   StatusBar,
 } from "react-native";
 
-const List = () => {
-  return <NavigationContainer></NavigationContainer>;
+const List = ({ navigation }) => {
+  return (
+    <View>
+      <Button
+        title="Back"
+        onPress={() => {
+          navigation.goBack();
+        }}
+      />
+      <Text>Task List</Text>
+    </View>
+  );
 };
 
 export default List;

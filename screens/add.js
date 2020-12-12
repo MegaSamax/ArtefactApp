@@ -11,8 +11,12 @@ import {
   StatusBar,
 } from "react-native";
 
-const Add = () => {
-  return <NavigationContainer></NavigationContainer>;
+const Add = ({ navigation }) => {
+  return (
+    <View>
+      <Text>Add Task</Text>
+    </View>
+  );
 };
 
 export default Add;
