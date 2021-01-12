@@ -14,6 +14,7 @@ import {
 import { Header } from "./components/main_comp/Header.js";
 import { RandomTask } from "./components/main_comp/RandomTask.js";
 import { CurrentTask } from "./components/main_comp/CurrentTask.js";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Main from "./screens/main.js";
 import Add from "./screens/add.js";
 import List from "./screens/list.js";

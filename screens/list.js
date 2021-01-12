@@ -12,6 +12,8 @@ import {
   ScrollView,
 } from "react-native";
 
+import { normalTasks, urgentTasks, currentTask } from "../store.js";
+
 import Tasks from "../components/tasks.js";
 
 const List = ({ navigation }) => {

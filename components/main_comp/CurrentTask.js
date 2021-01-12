@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
 
+import { normalTasks, urgentTasks, currentTask } from "../../store.js";
+
 export const CurrentTask = () => {
   const onPressCompleteTask = () => console.log("Temp Function");
 

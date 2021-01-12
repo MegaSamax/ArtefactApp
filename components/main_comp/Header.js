@@ -3,6 +3,8 @@ import { Text, View, Button, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import { normalTasks, urgentTasks, currentTask } from "../../store.js";
+
 export const Header = ({ navigation }) => {
   console.log(navigation);
 

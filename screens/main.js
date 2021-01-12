@@ -14,6 +14,8 @@ import { Header } from "../components/main_comp/Header.js";
 import { RandomTask } from "../components/main_comp/RandomTask.js";
 import { CurrentTask } from "../components/main_comp/CurrentTask.js";
 
+import { normalTasks, urgentTasks, currentTask } from "../store.js";
+
 const Main = ({ navigation }) => {
   return (
     <View
