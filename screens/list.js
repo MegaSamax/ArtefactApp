@@ -12,27 +12,13 @@ import {
   ScrollView,
 } from "react-native";
 
-import { normalTasks, urgentTasks, currentTask } from "../store.js";
+import { store } from "../store.js";
 
-import Tasks from "../components/tasks.js";
+import { Task } from "../components/Task.js";
 
-const List = ({ navigation }) => {
-  let state = {
-    taskArray: [],
-    taskText: "",
-  };
+import { observer } from "mobx-react";
 
-  let tasks = state.taskArray.map((val, key) => {
-    return (
-      <Tasks
-        key={key}
-        keyval={key}
-        val={val}
-        deleteMethod={() => deleteTask(key)}
-      />
-    );
-  });
-
+const List = observer(({ navigation }) => {
   return (
     <View>
       {/* Header */}
@@ -47,6 +33,11 @@ const List = ({ navigation }) => {
       {/* Title */}
       <Text>Task List</Text>
 
+      {/* List of tasks */}
+      {store.tasks.map((task) => {
+        return <Task key={task.id} task={task} />;
+      })}
+
       {/* Add Task Navigation Button */}
       <Button
         onPress={() => navigation.push("Add")}
@@ -59,6 +50,6 @@ const List = ({ navigation }) => {
       <ScrollView></ScrollView>
     </View>
   );
-};
+});
 
 export default List;

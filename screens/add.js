@@ -13,14 +13,17 @@ import {
   Switch,
 } from "react-native";
 
-import Tasks from "../components/tasks.js";
-
-import { normalTasks, urgentTasks, currentTask } from "../store.js";
+import { store } from "../store.js";
 
 const Add = ({ navigation }) => {
   // Switch Toggle States
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const [text, setText] = useState("");
+
+  const addTask = () => {
+    store.addTask(text, isEnabled);
+  };
 
   return (
     <View>
@@ -51,10 +54,12 @@ const Add = ({ navigation }) => {
       <TextInput
         placeholder="Enter task here"
         underlineColorAndroid="transparent"
+        onChangeText={(newText) => setText(newText)}
+        value={text}
       ></TextInput>
 
       {/* Confirmation Button */}
-      <Button title="Save" />
+      <Button title="Save" onPress={addTask} />
     </View>
   );
 };
