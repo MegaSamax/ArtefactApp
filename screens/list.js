@@ -34,9 +34,11 @@ const List = observer(({ navigation }) => {
       <Text>Task List</Text>
 
       {/* List of tasks */}
-      {store.tasks.map((task) => {
-        return <Task key={task.id} task={task} />;
-      })}
+      {store.tasks
+        .filter((task) => store.getCategory().colour === task.colour)
+        .map((task) => {
+          return <Task key={task.id} task={task} />;
+        })}
 
       {/* Add Task Navigation Button */}
       <Button
