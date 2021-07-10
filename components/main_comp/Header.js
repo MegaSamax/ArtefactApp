@@ -3,9 +3,10 @@ import { Text, View, Button, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { normalTasks, urgentTasks, currentTask } from "../../store.js";
+import { store } from "../../store.js";
+import { observer } from "mobx-react";
 
-export const Header = ({ navigation }) => {
+export const Header = observer(({ navigation }) => {
   console.log(navigation);
 
   return (
@@ -32,7 +33,7 @@ export const Header = ({ navigation }) => {
             alignSelf: "center",
           }}
         >
-          Open #
+          Open: {store.tasks.length}
         </Text>
       </View>
 
@@ -42,7 +43,7 @@ export const Header = ({ navigation }) => {
             alignSelf: "center",
           }}
         >
-          Complete #
+          Completed: {store.completedTasks}
         </Text>
       </View>
 
@@ -56,7 +57,7 @@ export const Header = ({ navigation }) => {
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

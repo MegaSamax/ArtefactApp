@@ -22,6 +22,8 @@ class Store {
 
   @persist currentTask = 0;
 
+  @persist completedTasks = 0;
+
   addTask(text, urgent) {
     const newTask = {
       id: uuidv4(),
@@ -34,16 +36,30 @@ class Store {
     console.log(newTask);
   }
 
+  completeTask = () => {
+    // Check there is a Task to complete
+    if (!this.getCurrentTask()) {
+      return;
+    }
+
+    this.deleteTask(this.currentTask);
+    this.completedTasks++;
+  };
+
   deleteTask(id) {
     this.tasks = this.tasks.filter((task) => {
       return task.id !== id;
     });
   }
 
+  getCurrentTask = () => {
+    return this.tasks.find((task) => task.id === this.currentTask);
+  };
+
   // Random Task Selection
   selectRandomTask = () => {
     // Check if there is an existing task
-    if (this.tasks.find((task) => task.id === this.currentTask)) {
+    if (this.getCurrentTask()) {
       return;
     }
 

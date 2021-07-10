@@ -4,8 +4,6 @@ import { observer } from "mobx-react";
 import { store } from "../../store.js";
 
 export const CurrentTask = observer(() => {
-  const onPressCompleteTask = () => console.log("Temp Function");
-
   return (
     <View style={styles.container}>
       {/* Current Task Title */}
@@ -22,9 +20,7 @@ export const CurrentTask = observer(() => {
 
       {/* Current Task Content */}
       <View style={[{ flex: 4, alignSelf: "stretch" }, styles.wrapping]}>
-        <Text>
-          {store.tasks.find((task) => task.id === store.currentTask)?.text}
-        </Text>
+        <Text>{store.getCurrentTask()?.text}</Text>
       </View>
 
       {/* Complete Task Button */}
@@ -34,11 +30,7 @@ export const CurrentTask = observer(() => {
           alignSelf: "flex-end",
         }}
       >
-        <Button
-          onPress={onPressCompleteTask}
-          title="Complete"
-          color="#D1603D"
-        />
+        <Button onPress={store.completeTask} title="Complete" color="#D1603D" />
       </View>
     </View>
   );
