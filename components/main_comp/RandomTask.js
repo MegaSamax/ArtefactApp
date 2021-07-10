@@ -1,15 +1,17 @@
 import React from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
 
-import { normalTasks, urgentTasks, currentTask } from "../../store.js";
+import { store } from "../../store.js";
 
 export const RandomTask = () => {
-  const onPressRandomTask = () => console.log("Temp Function");
-
   return (
     <View style={styles.Button}>
       {/* Generate Task Button */}
-      <Button onPress={onPressRandomTask} title="Random Task" color="#D1603D" />
+      <Button
+        onPress={store.selectRandomTask}
+        title="Random Task"
+        color="#D1603D"
+      />
     </View>
   );
 };

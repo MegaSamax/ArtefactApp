@@ -1,9 +1,9 @@
 import React from "react";
 import { Text, Button, View, StyleSheet } from "react-native";
+import { observer } from "mobx-react";
+import { store } from "../../store.js";
 
-import { normalTasks, urgentTasks, currentTask } from "../../store.js";
-
-export const CurrentTask = () => {
+export const CurrentTask = observer(() => {
   const onPressCompleteTask = () => console.log("Temp Function");
 
   return (
@@ -22,7 +22,9 @@ export const CurrentTask = () => {
 
       {/* Current Task Content */}
       <View style={[{ flex: 4, alignSelf: "stretch" }, styles.wrapping]}>
-        <Text> </Text>
+        <Text>
+          {store.tasks.find((task) => task.id === store.currentTask)?.text}
+        </Text>
       </View>
 
       {/* Complete Task Button */}
@@ -40,7 +42,7 @@ export const CurrentTask = () => {
       </View>
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

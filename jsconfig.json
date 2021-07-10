@@ -1,0 +1,9 @@
+// Enable Experimtemal Decorator remove red underline
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+		"experimentalDecorators": true
+  },
+  "include": ["*"]
+}
