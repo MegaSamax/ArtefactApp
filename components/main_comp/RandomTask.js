@@ -1,7 +1,15 @@
 import { observer } from "mobx-react";
 import React, { useState, useRef } from "react";
-import { Text, Button, View, StyleSheet, Alert, Image } from "react-native";
-// import Dialog from "react-native-dialog";
+import {
+  Text,
+  Button,
+  View,
+  StyleSheet,
+  Alert,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import Dialog from "react-native-dialog";
 import { store } from "../../store.js";
 
 export const RandomTask = observer(() => {
@@ -113,9 +121,8 @@ export const RandomTask = observer(() => {
         title={store.getCategory().name}
         color={store.getCategory().cssColour}
       />
-
       {/* Update Category Name */}
-      {/* <Dialog.Container visible={visible}>
+      <Dialog.Container visible={visible}>
         <Dialog.Title>Rename Category</Dialog.Title>
         <Dialog.Description>Please choose a new name</Dialog.Description>
         <Dialog.Input
@@ -125,28 +132,23 @@ export const RandomTask = observer(() => {
         />
         <Dialog.Button label="Cancel" onPress={handleCancel} />
         <Dialog.Button label="Confirm" onPress={handleConfirm} />
-      </Dialog.Container> */}
+      </Dialog.Container>
 
-      {/* <Image
-        resizeMode={"contain"}
-        style={{ width: 150, height: 150 }}
-        source={store.getCategory().image}
-      /> */}
-
+      {/* Generate Task Button */}
+      {store.getCurrentTask() ? null : (
+        <TouchableOpacity onPress={store.selectRandomTask} activeOpacity={0.5}>
+          <Image
+            style={{ width: 100, height: 100 }}
+            source={require("../../assets/unnamed.png")}
+          />
+        </TouchableOpacity>
+      )}
       {renderSlime()}
-
       {/* Navigate Categories */}
       {/* Left buttom */}
       <Button onPress={store.prevCategory} title="<" color="#D1603D" />
       {/* Right buttom */}
       <Button onPress={store.nextCategory} title=">" color="#D1603D" />
-
-      {/* Generate Task Button */}
-      <Button
-        onPress={store.selectRandomTask}
-        title="Random Task"
-        color="#D1603D"
-      />
     </View>
   );
 });
