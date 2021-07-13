@@ -1,6 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import { persist } from "mobx-persist";
 import { v4 as uuidv4 } from "uuid";
+import React from "react";
+import { Image } from "react-native";
 
 class Store {
   constructor() {
@@ -12,48 +14,56 @@ class Store {
   @persist("object") categories = [
     {
       colour: "Blue",
+      cssColour: "#2196f3",
       name: "Blue",
       tasksToUnlock: 0,
       currentTask: 0,
     },
     {
       colour: "Yellow",
+      cssColour: "#f3ef21",
       name: "Yellow",
       tasksToUnlock: 5,
       currentTask: 0,
     },
     {
       colour: "Red",
+      cssColour: "#f32521",
       name: "Red",
       tasksToUnlock: 10,
       currentTask: 0,
     },
     {
       colour: "Green",
+      cssColour: "#21f360",
       name: "Green",
       tasksToUnlock: 25,
       currentTask: 0,
     },
     {
       colour: "Orange",
+      cssColour: "#f37c27",
       name: "Orange",
       tasksToUnlock: 50,
       currentTask: 0,
     },
     {
       colour: "Purple",
+      cssColour: "#8321f3",
       name: "Purple",
       tasksToUnlock: 75,
       currentTask: 0,
     },
     {
       colour: "White",
+      cssColour: "#d3d3d3",
       name: "White",
       tasksToUnlock: 100,
       currentTask: 0,
     },
     {
       colour: "Black",
+      cssColour: "#000000",
       name: "Black",
       tasksToUnlock: 150,
       currentTask: 0,
@@ -64,6 +74,10 @@ class Store {
 
   getCategory = () => {
     return this.categories[this.currentCategory];
+  };
+
+  updateCategoryName = (newName) => {
+    return (this.getCategory().name = newName);
   };
 
   // Change Categories Funtions
