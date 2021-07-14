@@ -30,7 +30,11 @@ export const CurrentTask = observer(() => {
           alignSelf: "flex-end",
         }}
       >
-        <Button onPress={store.completeTask} title="Complete" color="#D1603D" />
+        <Button
+          onPress={store.completeTask}
+          title="Complete"
+          color={store.getCategory().cssColour}
+        />
       </View>
     </View>
   );

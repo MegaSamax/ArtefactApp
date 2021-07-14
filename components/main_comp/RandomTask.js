@@ -8,6 +8,7 @@ import {
   Alert,
   Image,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import Dialog from "react-native-dialog";
 import { store } from "../../store.js";
@@ -30,6 +31,39 @@ export const RandomTask = observer(() => {
     if (newName !== "") {
       store.updateCategoryName(newName);
     }
+  };
+
+  const renderRightButton = () => {
+    const onLastCategory =
+      store.currentCategory === store.categories.length - 1;
+    const nextCategoryLocked = store.isNextCategoryLocked();
+
+    if (onLastCategory) {
+      return <View style={{ width: 40, height: 40 }}></View>;
+    }
+
+    if (nextCategoryLocked) {
+      return (
+        <Image
+          resizeMode={"contain"}
+          style={{ width: 40, height: 40 }}
+          source={require("../../assets/lock.png")}
+          tintColor={store.getCategory().cssColour}
+        />
+      );
+    }
+
+    // Not on last category and next category not locked
+    return (
+      <TouchableOpacity onPress={store.nextCategory}>
+        <Image
+          resizeMode={"contain"}
+          style={{ width: 40, height: 40 }}
+          source={require("../../assets/right-arrow.png")}
+          tintColor={store.getCategory().cssColour}
+        />
+      </TouchableOpacity>
+    );
   };
 
   // Render Correct Slime Colour
@@ -114,15 +148,21 @@ export const RandomTask = observer(() => {
   };
 
   return (
-    <View style={styles.Button}>
-      {/* Slime Name */}
-      <Button
-        onPress={rename}
-        title={store.getCategory().name}
-        color={store.getCategory().cssColour}
-      />
-      {/* Update Category Name */}
-      <Dialog.Container visible={visible}>
+    <ImageBackground
+      source={require("../../assets/Tank.png")}
+      resizeMode="cover"
+      style={{ flex: 1 }}
+    >
+      <View style={styles.Container}>
+        {/* Slime Name */}
+        <Button
+          onPress={rename}
+          title={store.getCategory().name}
+          color={store.getCategory().cssColour}
+        />
+
+        {/* Update Category Name ----- ENABLE LATER TESTING */}
+        {/* <Dialog.Container visible={visible}>
         <Dialog.Title>Rename Category</Dialog.Title>
         <Dialog.Description>Please choose a new name</Dialog.Description>
         <Dialog.Input
@@ -132,31 +172,65 @@ export const RandomTask = observer(() => {
         />
         <Dialog.Button label="Cancel" onPress={handleCancel} />
         <Dialog.Button label="Confirm" onPress={handleConfirm} />
-      </Dialog.Container>
+      </Dialog.Container> */}
 
-      {/* Generate Task Button */}
-      {store.getCurrentTask() ? null : (
-        <TouchableOpacity onPress={store.selectRandomTask} activeOpacity={0.5}>
-          <Image
-            style={{ width: 100, height: 100 }}
-            source={require("../../assets/unnamed.png")}
-          />
+        {/* Generate Task Button */}
+        <TouchableOpacity
+          onPress={store.selectRandomTask}
+          activeOpacity={0.5}
+          style={styles.questionMark}
+        >
+          {store.getCurrentTask() ? (
+            <View style={{ width: 100, height: 100 }}></View>
+          ) : (
+            <Image
+              style={{ width: 100, height: 100 }}
+              source={require("../../assets/unnamed.png")}
+            />
+          )}
         </TouchableOpacity>
-      )}
-      {renderSlime()}
-      {/* Navigate Categories */}
-      {/* Left buttom */}
-      <Button onPress={store.prevCategory} title="<" color="#D1603D" />
-      {/* Right buttom */}
-      <Button onPress={store.nextCategory} title=">" color="#D1603D" />
-    </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          {/* Navigate Categories */}
+          {/* Left buttom */}
+          {store.currentCategory > 0 ? (
+            <TouchableOpacity onPress={store.prevCategory}>
+              <Image
+                resizeMode={"contain"}
+                style={{ width: 40, height: 40 }}
+                source={require("../../assets/left-arrow.png")}
+                tintColor={store.getCategory().cssColour}
+              />
+            </TouchableOpacity>
+          ) : (
+            <View style={{ width: 40, height: 40 }}></View>
+          )}
+
+          {/* Slime Gif */}
+          {renderSlime()}
+
+          {/* Right buttom */}
+          {renderRightButton()}
+        </View>
+      </View>
+    </ImageBackground>
   );
 });
 
 const styles = StyleSheet.create({
-  Button: {
+  Container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  questionMark: {
+    transform: [{ translateY: 25 }],
   },
 });

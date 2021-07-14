@@ -17,6 +17,7 @@ export const Task = observer(({ task }) => {
         onPress={() => {
           store.deleteTask(task.id);
         }}
+        color={store.getCategory().cssColour}
       />
     </>
   );

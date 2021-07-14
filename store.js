@@ -97,6 +97,22 @@ class Store {
     this.currentCategory++;
   };
 
+  isNextCategoryLocked = () => {
+    if (this.currentCategory === this.categories.length - 1) {
+      // there is no next category
+      return false;
+    }
+
+    if (
+      this.completedTasks <=
+      this.categories[this.currentCategory + 1].tasksToUnlock
+    ) {
+      return true;
+    }
+
+    return false;
+  };
+
   @persist completedTasks = 0;
 
   addTask(text, urgent) {
@@ -162,5 +178,3 @@ class Store {
 }
 
 export const store = new Store();
-
-//store.tasks[1].text

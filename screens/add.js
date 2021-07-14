@@ -34,6 +34,7 @@ const Add = ({ navigation }) => {
         onPress={() => {
           navigation.goBack();
         }}
+        color={store.getCategory().cssColour}
       />
 
       {/* Title */}
@@ -59,7 +60,7 @@ const Add = ({ navigation }) => {
       ></TextInput>
 
       {/* Confirmation Button */}
-      <Button title="Save" onPress={addTask} />
+      <Button title="Save" onPress={addTask} color={store.getCategory().cssColour}/>
     </View>
   );
 };

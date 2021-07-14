@@ -28,6 +28,7 @@ const List = observer(({ navigation }) => {
         onPress={() => {
           navigation.goBack();
         }}
+        color={store.getCategory().cssColour}
       />
 
       {/* Title */}
@@ -44,7 +45,7 @@ const List = observer(({ navigation }) => {
       <Button
         onPress={() => navigation.push("Add")}
         title="Add"
-        color="#D1603D"
+        color={store.getCategory().cssColour}
       />
 
       {/* Body */}

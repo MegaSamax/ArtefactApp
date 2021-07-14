@@ -22,7 +22,7 @@ export const Header = observer(({ navigation }) => {
         <Button
           onPress={() => navigation.push("List")}
           title="List"
-          color="#D1603D"
+          color={store.getCategory().cssColour}
         />
       </View>
 
@@ -52,7 +52,7 @@ export const Header = observer(({ navigation }) => {
         <Button
           onPress={() => navigation.push("Add")}
           title="Add"
-          color="#D1603D"
+          color={store.getCategory().cssColour}
         />
       </View>
     </View>
