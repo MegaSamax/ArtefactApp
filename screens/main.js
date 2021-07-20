@@ -25,11 +25,11 @@ const Main = ({ navigation }) => {
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
       }}
     >
-      <View style={{ flex: 10 }}>
+      <View style={{ flex: 10, paddingTop: 10 }}>
         <Header navigation={navigation} />
       </View>
 
-      <View style={{ flex: 45 }}>
+      <View style={{ flex: 45, paddingBottom: 10 }}>
         <RandomTask navigation={navigation} />
       </View>
 

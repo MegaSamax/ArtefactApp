@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Button, StyleSheet } from "react-native";
+import { Text, View, Button, StyleSheet, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -27,23 +27,39 @@ export const Header = observer(({ navigation }) => {
       </View>
 
       {/* Open / Completed Task Counters */}
-      <View style={styles.container}>
+      <View style={[styles.container, styles.completedContainer]}>
+        <Text
+          style={{
+            alignSelf: "center",
+            fontWeight: "bold",
+          }}
+        >
+          Open:
+        </Text>
         <Text
           style={{
             alignSelf: "center",
           }}
         >
-          Open: {store.tasks.length}
+          {store.tasks.length}
         </Text>
       </View>
 
-      <View style={styles.container}>
+      <View style={[styles.container, styles.completedContainer]}>
+        <Text
+          style={{
+            alignSelf: "center",
+            fontWeight: "bold",
+          }}
+        >
+          Closed:
+        </Text>
         <Text
           style={{
             alignSelf: "center",
           }}
         >
-          Completed: {store.completedTasks}
+          {store.completedTasks}
         </Text>
       </View>
 
@@ -62,7 +78,14 @@ export const Header = observer(({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 5,
+    alignSelf: "center",
+    margin: 5,
+  },
+  completedContainer: {
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: "#b6dfff",
+    backgroundColor: "white",
     margin: 2,
   },
 });

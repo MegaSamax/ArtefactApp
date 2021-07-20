@@ -151,7 +151,12 @@ export const RandomTask = observer(() => {
     <ImageBackground
       source={require("../../assets/Tank.png")}
       resizeMode="cover"
-      style={{ flex: 1 }}
+      style={{
+        flex: 1,
+        borderRadius: 4,
+        borderWidth: 2,
+        borderColor: "#b6dfff",
+      }}
     >
       <View style={styles.Container}>
         {/* Slime Name */}

@@ -1,7 +1,8 @@
 import React from "react";
-import { Text, Button, View, StyleSheet } from "react-native";
+import { Text, Button, View, StyleSheet, ImageBackground } from "react-native";
 import { observer } from "mobx-react";
 import { store } from "../../store.js";
+import { Icon } from "expo";
 
 export const CurrentTask = observer(() => {
   return (
@@ -15,7 +16,7 @@ export const CurrentTask = observer(() => {
           styles.wrapping,
         ]}
       >
-        <Text style={{ fontWeight: "bold" }}>Task</Text>
+        <Text style={{ fontWeight: "bold" }}>Current Task</Text>
       </View>
 
       {/* Current Task Content */}
@@ -49,7 +50,9 @@ const styles = StyleSheet.create({
   wrapping: {
     borderRadius: 4,
     borderWidth: 2,
+    borderColor: "#b6dfff",
     padding: 5,
     marginBottom: 5,
+    backgroundColor: "white",
   },
 });
