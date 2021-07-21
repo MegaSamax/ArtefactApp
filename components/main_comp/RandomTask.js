@@ -43,14 +43,21 @@ export const RandomTask = observer(() => {
     }
 
     if (nextCategoryLocked) {
-      return (
+      return [
         <Image
           resizeMode={"contain"}
           style={{ width: 40, height: 40 }}
           source={require("../../assets/lock.png")}
           tintColor={store.getCategory().cssColour}
-        />
-      );
+          key={Date()}
+        />,
+        // Display number of Remaining task to complete to Unlock
+        <Text style={styles.rightText}>
+          {store.categories[store.currentCategory + 1].tasksToUnlock -
+            store.completedTasks +
+            1}
+        </Text>,
+      ];
     }
 
     // Not on last category and next category not locked
@@ -222,7 +229,7 @@ export const RandomTask = observer(() => {
           {renderSlime()}
 
           {/* Right buttom */}
-          {renderRightButton()}
+          <View style={styles.right}>{renderRightButton()}</View>
         </View>
       </View>
     </ImageBackground>
@@ -237,5 +244,13 @@ const styles = StyleSheet.create({
   },
   questionMark: {
     transform: [{ translateY: 25 }],
+  },
+  right: {
+    textAlign: "center",
+  },
+  rightText: {
+    alignSelf: "center",
+    fontWeight: "bold",
+    color: store.getCategory().cssColour,
   },
 });

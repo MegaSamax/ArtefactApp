@@ -58,7 +58,14 @@ const Add = ({ navigation }) => {
         underlineColorAndroid="transparent"
         onChangeText={(newText) => setText(newText)}
         value={text}
-        style={styles.border}
+        multiline
+        numberOfLines={25}
+        style={[
+          styles.border,
+          {
+            height: 200,
+          },
+        ]}
       ></TextInput>
 
       {/* Urgent Task Switch Button */}
