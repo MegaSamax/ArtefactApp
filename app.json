@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ArtefactApp",
-    "slug": "ArtefactApp",
+    "name": "Slime Tasker To-Do-List",
+    "slug": "slime-tasker",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,10 +23,12 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.megasamax.slimetasker"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }

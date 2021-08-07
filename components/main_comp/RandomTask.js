@@ -174,17 +174,17 @@ export const RandomTask = observer(() => {
         />
 
         {/* Update Category Name ----- ENABLE LATER TESTING */}
-        {/* <Dialog.Container visible={visible}>
-        <Dialog.Title>Rename Category</Dialog.Title>
-        <Dialog.Description>Please choose a new name</Dialog.Description>
-        <Dialog.Input
-          onChangeText={(val) => {
-            setNewName(val);
-          }}
-        />
-        <Dialog.Button label="Cancel" onPress={handleCancel} />
-        <Dialog.Button label="Confirm" onPress={handleConfirm} />
-      </Dialog.Container> */}
+        <Dialog.Container visible={visible}>
+          <Dialog.Title>Rename Category</Dialog.Title>
+          <Dialog.Description>Please choose a new name</Dialog.Description>
+          <Dialog.Input
+            onChangeText={(val) => {
+              setNewName(val);
+            }}
+          />
+          <Dialog.Button label="Cancel" onPress={handleCancel} />
+          <Dialog.Button label="Confirm" onPress={handleConfirm} />
+        </Dialog.Container>
 
         {/* Generate Task Button */}
         <TouchableOpacity
