@@ -43,7 +43,11 @@ const Add = ({ navigation }) => {
           {/* Confirmation Button */}
           <Button
             title="Save"
-            onPress={addTask}
+            // onPressIn={addTask}
+            onPress={() => {
+              store.addTask(text, isEnabled);
+              navigation.goBack();
+            }}
             color={store.getCategory().cssColour}
           />
         </View>
